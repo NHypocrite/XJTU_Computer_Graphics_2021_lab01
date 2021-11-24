@@ -1,5 +1,5 @@
 #include "material.h"
-
+// 随机浮点数生成
 float get_random_float(float min, float max) {
   static std::random_device dev;
   static std::mt19937 rng(dev());
@@ -7,7 +7,7 @@ float get_random_float(float min, float max) {
       min, max); // distribution in range [min, max]
   return dist(rng);
 }
-
+// 三维随机矩阵生成
 Vec3 get_random_Vec3(float min, float max){
   return Vec3(get_random_float(min,max),get_random_float(min,max),get_random_float(min,max));
 }
@@ -17,7 +17,7 @@ Vec3 random_in_unit_sphere() {
   while (true) {
     auto p = get_random_Vec3(-1,1);
     if (p.squared_length() >= 1) continue;
-    return p;  //这里先归一化了,后面多数使用这个版本
+    return p;  //这里归一化了
   }
 }
 
@@ -30,7 +30,7 @@ Vec3 random_unit_vector() {
 Vec3 random_sample_hemisphere(const Vec3 &normal) {
 // 随机在单位半球上采样光线
   Vec3 in_unit_sphere = random_in_unit_sphere();
-  if (dot(in_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
+  if (dot(in_unit_sphere, normal) > 0.0) 
     return in_unit_sphere;
   else
     return -in_unit_sphere;
@@ -127,7 +127,7 @@ bool Material::scatter(const Ray &r, hit_record &rec, Ray &scattered,Vec3 &atten
   }
 
   default: {
-    std::cout << "Unsurportted Materail type!" << std::endl;
+    std::cout << "Unsurportted Material type!" << std::endl;
     return false;
     break;
   }
