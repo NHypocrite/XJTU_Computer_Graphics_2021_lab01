@@ -75,15 +75,15 @@ int main() {
   /*将所有能够被撞击的物体信息保存在列表中*/
   std::vector<hitable *> list;
 /*--------------------------------------------------------------------*/
-  // //散射球体 
-  // //设定材质
-  // // Material *diffuse_ground = new Material(Vec3(0.8, 0.8, 0.0), Diffuse);
-  // // Material *diffuse_center = new Material(Vec3(0.7, 0.3, 0.3), Diffuse);
-  // Material *diffuse_ground = new Material(Vec3(0.5, 0.5, 0.5), Diffuse);
-  // Material *diffuse_center = new Material(Vec3(0.5, 0.5, 0.5), Diffuse);
-  // //物体加入列表
-  // list.push_back(new sphere(Vec3(0, -100.5, -1), 100, diffuse_ground));
-  // list.push_back(new sphere(Vec3(0, 0, -1), 0.5, diffuse_center));
+  //散射球体 
+  //设定材质
+  // Material *diffuse_ground = new Material(Vec3(0.8, 0.8, 0.0), Diffuse);
+  // Material *diffuse_center = new Material(Vec3(0.7, 0.3, 0.3), Diffuse);
+  Material *diffuse_ground = new Material(Vec3(0.5, 0.5, 0.5), Diffuse);
+  Material *diffuse_center = new Material(Vec3(0.5, 0.5, 0.5), Diffuse);
+  //物体加入列表
+  list.push_back(new sphere(Vec3(0, -100.5, -1), 100, diffuse_ground));
+  list.push_back(new sphere(Vec3(0, 0, -1), 0.5, diffuse_center));
 /*--------------------------------------------------------------------*/
   // // //金属球体
   // //设定材质
@@ -98,19 +98,19 @@ int main() {
   // list.push_back(new sphere(Vec3(-1, 0, -1), 0.5, metal_left));
   // list.push_back(new sphere(Vec3(1, 0, -1), 0.5, metal_right));
 /*--------------------------------------------------------------------*/
-  //透明球体
-  //设定材质
-  Material *diffuse_ground = new Material(Vec3(0.8, 0.8, 0.0), Diffuse);
-  Material *diffuse_center = new Material(Vec3(0.1, 0.2, 0.5), Diffuse);
-  Material *dielectric_left = new Material(1.5, Dielectric);
-  Material *metal_right = new Material(Vec3(0.8, 0.6, 0.2), 1.0, Metal);
+  // //透明球体
+  // //设定材质
+  // Material *diffuse_ground = new Material(Vec3(0.8, 0.8, 0.0), Diffuse);
+  // Material *diffuse_center = new Material(Vec3(0.1, 0.2, 0.5), Diffuse);
+  // Material *dielectric_left = new Material(1.5, Dielectric);
+  // Material *metal_right = new Material(Vec3(0.8, 0.6, 0.2), 1.0, Metal);
     
-  //物体加入列表
-  list.push_back(new sphere(Vec3(0, -100.5, -1), 100, diffuse_ground));
-  list.push_back(new sphere(Vec3(0, 0, -1), 0.5, diffuse_center));
-  list.push_back(new sphere(Vec3(-1, 0, -1), 0.5, dielectric_left));
-  list.push_back(new sphere(Vec3(-1, 0, -1), -0.4, dielectric_left));    // 空心玻璃球
-  list.push_back(new sphere(Vec3(1, 0, -1), 0.5, metal_right));
+  // //物体加入列表
+  // list.push_back(new sphere(Vec3(0, -100.5, -1), 100, diffuse_ground));
+  // list.push_back(new sphere(Vec3(0, 0, -1), 0.5, diffuse_center));
+  // list.push_back(new sphere(Vec3(-1, 0, -1), 0.5, dielectric_left));
+  // list.push_back(new sphere(Vec3(-1, 0, -1), -0.4, dielectric_left));    // 空心玻璃球
+  // list.push_back(new sphere(Vec3(1, 0, -1), 0.5, metal_right));
 /*--------------------------------------------------------------------*/
   //将物体组成的表加入碰撞列表
   hitable *world = new hitable_list(list, list.size());
@@ -150,12 +150,12 @@ int main() {
     }
   }
 
-  svpng(fopen("bg3_50_2.png", "wb"), W, H, img, 0);
+  svpng(fopen("diffuse.png", "wb"), W, H, img, 0);
   std::cout << "finished" << std::endl;
 
   //释放资源
-  // delete diffuse_center, diffuse_ground;
+  delete diffuse_center, diffuse_ground;
   // delete diffuse_center, diffuse_ground, metal_left, metal_right;
-  delete diffuse_center, diffuse_ground, dielectric_left, metal_right;
+  // delete diffuse_center, diffuse_ground, dielectric_left, metal_right;
   return 0;
 }

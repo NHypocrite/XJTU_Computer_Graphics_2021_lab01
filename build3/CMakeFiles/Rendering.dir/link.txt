@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/Rendering.dir/camera.cpp.o CMakeFiles/Rendering.dir/hitable_list.cpp.o CMakeFiles/Rendering.dir/main.cpp.o CMakeFiles/Rendering.dir/material.cpp.o CMakeFiles/Rendering.dir/ray.cpp.o CMakeFiles/Rendering.dir/sphere.cpp.o CMakeFiles/Rendering.dir/vec3.cpp.o  -o Rendering  -lgomp -lpthread 

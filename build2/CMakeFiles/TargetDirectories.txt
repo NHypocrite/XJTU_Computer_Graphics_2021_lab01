@@ -1,0 +1,3 @@
+/home/xjtuhpc/Code/lab01/XJTU_Computer_Graphics_2021_lab01/build2/CMakeFiles/rebuild_cache.dir
+/home/xjtuhpc/Code/lab01/XJTU_Computer_Graphics_2021_lab01/build2/CMakeFiles/edit_cache.dir
+/home/xjtuhpc/Code/lab01/XJTU_Computer_Graphics_2021_lab01/build2/CMakeFiles/Rendering.dir
