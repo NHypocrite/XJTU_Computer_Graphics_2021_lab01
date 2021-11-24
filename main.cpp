@@ -117,7 +117,7 @@ int main() {
   int tmp = 0;
   // // Windows随机数
   // srand((unsigned)time(NULL));
-  #pragma omp parallel for     //并行
+  #pragma omp parallel for     //接下来的for循环将被多线程执行
   for (int j = H - 1; j >= 0; j--) {
     // if(omp_get_thread_num()==1)
     if(j % 20 == 1)
@@ -141,12 +141,11 @@ int main() {
       auto scale = 1.0 / SamplingRate;
 
 // #pragma omp critical
-
+      // sqrt是伽马校正
       p[tmp] = int(255.99 * sqrt(col[0]));
       p[tmp+1] = int(255.99 * sqrt(col[1]));
       p[tmp+2] = int(255.99 * sqrt(col[2]));
       
-
       // std::cerr << "\rPixels remaining in this line: " << W-i <<' '<< std::flush; 
     }
   }
